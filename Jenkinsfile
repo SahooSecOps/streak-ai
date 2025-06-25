@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('pullfromscm') {
             steps {
-                sh 'git pull https://github.com/SahooSecOps/test1.git'
+                sh 'git clone https://github.com/SahooSecOps/test1.git'
             }
         }
         stage('build') {
