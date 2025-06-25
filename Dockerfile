@@ -4,6 +4,6 @@ RUN pip install requests
 RUN mkdir /src
 COPY *.py /src/*.py
 WORKDIR /src
-RUN chmod +x test.py
+RUN chmod +x *.py
 ENTRYPOINT ["python", "/src/test.py"]
 
