@@ -5,5 +5,5 @@ RUN mkdir /src
 COPY *.py /src/*.py
 WORKDIR /src
 RUN chmod +x *.py
-ENTRYPOINT ["python", "/src/test.py"]
+ENTRYPOINT ["python", "/src/index.py"]
 
