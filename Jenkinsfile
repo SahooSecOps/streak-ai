@@ -1,6 +1,11 @@
 pipeline {
     agent { docker { image 'python:3.13.5-alpine3.22' } }
     stages {
+        stage('pullfromscm') {
+            steps {
+                sh 'git pull https://github.com/SahooSecOps/test1.git'
+            }
+        }
         stage('build') {
             steps {
                 sh 'docker build -t test .'
