@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                sh 'git clone https://github.com/SahooSecOps/test1.git'
+                sh 'git clone https://github.com/SahooSecOps/streak-ai.git'
             }
         }
         stage('build') {
@@ -32,11 +32,11 @@ pipeline {
     post {
          success {
              
-                 sh ' docker rm -f test && rm -rf /var/lib/jenkins/workspace/test*'
+                 sh ' docker rm -f test' #&& rm -rf /var/lib/jenkins/workspace/test*'
         }
          failure {
              
-                 sh ' docker rm -f test && rm -rf /var/lib/jenkins/workspace/test*'
+                 sh ' docker rm -f test' && #rm -rf /var/lib/jenkins/workspace/test*'
         }
         
     }
