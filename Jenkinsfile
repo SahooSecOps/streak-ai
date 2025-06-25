@@ -23,7 +23,7 @@ pipeline {
         }
         stage('run container') {
             steps {
-                 sh 'docker run localhost:5001/test:r1 -p 5000:5000 --name test'
+                 sh 'docker run -d localhost:5001/test:r1 -p 5000:5000 --name test && curl localhost:5000 && docker rm -f test'
             }
         }
         
