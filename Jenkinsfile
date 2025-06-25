@@ -32,11 +32,11 @@ pipeline {
     post {
          success {
              
-                 sh ' docker rm -f test' #&& rm -rf /var/lib/jenkins/workspace/test*'
+                 sh ' docker rm -f test'
         }
          failure {
              
-                 sh ' docker rm -f test' && #rm -rf /var/lib/jenkins/workspace/test*'
+                 sh ' docker rm -f test'
         }
         
     }
