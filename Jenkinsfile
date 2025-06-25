@@ -3,6 +3,13 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
+                script {
+                    def projectDir = 'streak-ai'
+                    if (fileExists(projectDir)) {
+                        echo "Directory ${projectDir} exists. Deleting..."
+                        sh "rm -rf ${projectDir}"
+                    }
+                }
                 sh 'git clone git@github.com:SahooSecOps/streak-ai.git'
             }
         }
