@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                sh 'git clone https://github.com/SahooSecOps/streak-ai.git'
+                sh 'git clone git@github.com:SahooSecOps/streak-ai.git'
             }
         }
         stage('build') {
