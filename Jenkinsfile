@@ -1,10 +1,5 @@
 pipeline {
     stages {
-        stage('pullfromscm') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-user-github', url: 'https://github.com/SahooSecOps/test1.git']]])
-            }
-        }
         stage('build') {
             steps {
                 sh 'docker build -t test .'
