@@ -2,7 +2,7 @@ pipeline {
     stages {
         stage('pullfromscm') {
             steps {
-                scheckout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SahooSecOps/test1.git']])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-user-github', url: 'https://github.com/SahooSecOps/test1.git']]])
             }
         }
         stage('build') {
