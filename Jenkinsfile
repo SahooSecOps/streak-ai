@@ -8,22 +8,22 @@ pipeline {
         }
         stage('build') {
             steps {
-                 sh ' docker build -t test .'
+                 sh ' docker build -t streakai .'
             }
         }
         stage('tag') {
             steps {
-                 sh ' docker tag  test localhost:5001/test:r1'
+                 sh ' docker tag  streakai localhost:5001/streakai:r1'
             }
         }
         stage('push') {
             steps {
-                 sh ' docker push localhost:5001/test:r1'
+                 sh ' docker push localhost:5001/streakai:r1'
             }
         }
         stage('run container') {
             steps {
-                 sh 'docker run -d -p 5000:5000   --name test  localhost:5001/test:r1 && sleep 5 && curl localhost:5000'
+                 sh 'docker run -d -p 5000:5000   --name streakai  localhost:5001/streakai:r1 && sleep 5 && curl localhost:5000'
             }
         }
         
@@ -32,11 +32,11 @@ pipeline {
     post {
          success {
              
-                 sh ' docker rm -f test'
+                 sh ' docker rm -f streakai'
         }
          failure {
              
-                 sh ' docker rm -f test'
+                 sh ' docker rm -f streakai'
         }
         
     }
