@@ -23,7 +23,7 @@ pipeline {
         }
         stage('run container') {
             steps {
-                 sh 'docker run -d -p 5000:5000   --name test  localhost:5001/test:r1 && curl localhost:5000 && docker rm -f test'
+                 sh 'docker run -d -p 5000:5000   --name test  localhost:5001/test:r1 && sleep 5 && curl localhost:5000'
             }
         }
         
@@ -32,11 +32,11 @@ pipeline {
     post {
          success {
              
-                 sh ' rm -rf /var/lib/jenkins/workspace/test*'
+                 sh ' docker rm -f test && rm -rf /var/lib/jenkins/workspace/test*'
         }
          failure {
              
-                 sh ' rm -rf /var/lib/jenkins/workspace/test*'
+                 sh ' docker rm -f test && rm -rf /var/lib/jenkins/workspace/test*'
         }
         
     }
