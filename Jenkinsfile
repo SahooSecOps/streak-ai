@@ -2,7 +2,7 @@ pipeline {
     stages {
         stage('pullfromscm') {
             steps {
-                sh 'git clone https://github.com/SahooSecOps/test1.git'
+                scheckout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SahooSecOps/test1.git']])
             }
         }
         stage('build') {
