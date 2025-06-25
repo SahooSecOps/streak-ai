@@ -21,12 +21,12 @@ pipeline {
                  sh ' docker push localhost:5001/test:r1'
             }
         }
-        stage('push') {
+        stage('remove obsolete') {
             steps {
                  sh 'rm -rf /var/lib/jenkins/workspace/test*'
             }
         }
-        stage('push') {
+        stage('run container') {
             steps {
                  sh 'docker run localhost:5001/test:r1 -p 5000:5000 --name test'
             }
