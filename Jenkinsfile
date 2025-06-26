@@ -35,8 +35,12 @@ pipeline {
         }
         stage('Test') {
             steps {
-                 sh './test_api.sh'
-            }
+                 script {
+                     def status = sh(script: './test_api.sh', returnStatus: true)
+                     if (status != 0) {
+                         error("API test failed!")
+                     }
+                }
         }
         
         
