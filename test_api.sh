@@ -22,12 +22,17 @@ do
 		fi
 	fi
 done
-response_code=$(timeout 10 curl -L -s -o /dev/null -w "%{http_code}" \
-	-X GET \
-	"http://localhost:5000/add?num1=3&num2=5"
-	)
-echo $response_code
-if [ $response_code -eq 200  ];
+num1=4
+num2=5
+op=$(awk "BEGIN {printf \"%.1f\", $num1 + $num2}")
+echo $op
+#response_code=$(timeout 10 curl -L -s -o /dev/null -w "%{http_code}" \
+#	-X GET \
+#	"http://localhost:5000/add?num1=$num1&num2=$num2"
+#	)
+res=$(curl "http://localhost:5000/add?num1=$num1&num2=$num2")
+echo $res
+if [ $res == $op  ];
 then
 	echo "api is working"
 	exit 0
