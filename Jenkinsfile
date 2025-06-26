@@ -43,8 +43,16 @@ pipeline {
                 }
         }
         
-        
       }
+        stage('deploy to k8s') {
+            steps {
+                    sh '
+                        kubectl apply -f app.yaml
+                        kubectl rollout restart streak-ai -n workspace
+                        kubectl rollout status streak-ai -n workspace
+                   '
+                }
+        }
     }
     
     post {
