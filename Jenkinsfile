@@ -30,9 +30,15 @@ pipeline {
         }
         stage('run container') {
             steps {
-                 sh 'docker run -d -p 5000:5000   --name streakai  localhost:5001/streakai:r1 && sleep 5 && curl localhost:5000'
+                 sh 'docker run -d -p 5000:5000   --name streakai  localhost:5001/streakai:r1 && sleep 5 && curl localhost:5000 && docker rm -f streakai'
             }
         }
+        stage('Test') {
+            steps {
+                 sh 'test_api.sh'
+            }
+        }
+        
         
     }
     
