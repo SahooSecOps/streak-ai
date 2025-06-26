@@ -35,4 +35,4 @@ else
 	echo "api is not working"
 	exit 1
 fi
-
+echo $?
