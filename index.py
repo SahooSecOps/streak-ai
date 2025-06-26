@@ -8,7 +8,7 @@ def home():
     return "Hello, World!"
 
 
-app.route('/add', methods=['GET'])
+@app.route('/add', methods=['GET'])
 def add():
     try:
         num1 = request.args.get('num1', type=float)
