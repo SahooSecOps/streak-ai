@@ -58,11 +58,11 @@ pipeline {
     post {
          success {
              
-                 sh ' docker rm -f streakai'
+                 sh ' docker rmi 10.160.0.3:5001/streakai:r1 '
         }
          failure {
              
-                 sh ' docker rm -f streakai'
+                 sh ' docker rmi 10.160.0.3:5001/streakai:r1 '
         }
         
     }
