@@ -20,17 +20,17 @@ pipeline {
         }
         stage('tag') {
             steps {
-                 sh ' docker tag  streakai localhost:5001/streakai:r1'
+                 sh ' docker tag  streakai 10.160.0.3:5001/streakai:r1'
             }
         }
         stage('push') {
             steps {
-                 sh ' docker push localhost:5001/streakai:r1'
+                 sh ' docker push 10.160.0.3:5001/streakai:r1'
             }
         }
         stage('run container') {
             steps {
-                 sh 'docker rm -f streakai && docker run -d -p 5000:5000   --name streakai  localhost:5001/streakai:r1 && sleep 5 && curl localhost:5000 && docker rm -f streakai'
+                 sh 'docker rm -f streakai && docker run -d -p 5000:5000   --name streakai  10.160.0.3:5001/streakai:r1 && sleep 5 && curl 10.160.0.3:5000 && docker rm -f streakai'
             }
         }
         stage('Test') {
