@@ -25,7 +25,7 @@ pipeline {
         }
         stage('push') {
             steps {
-                 sh ' docker push localhost:5001/streakai:r1 && echo $REGISTRY'
+                 sh ' docker push localhost:5001/streakai:r1'
             }
         }
         stage('run container') {
