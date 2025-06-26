@@ -22,8 +22,8 @@ do
 		fi
 	fi
 done
-num1=4 
-num2=2
+num1=5 
+num2=6
 op=$(awk "BEGIN {printf \"%.1f\", $num1 + $num2}")
 echo $op
 #response_code=$(timeout 10 curl -L -s -o /dev/null -w "%{http_code}" \
@@ -33,7 +33,7 @@ echo $op
 echo $num1 $num2
 res=$(curl "http://localhost:5000/add?num1=$num1&num2=$num2")
 echo $res
-if [ $res == $op  ];
+if [ "$(echo "$res == $op" | bc)" -eq 1  ];
 then
 	echo "api is working"
 	exit 0
