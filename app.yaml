@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: streak-ai
-        image: 'localhost:5001/streakai:r1'
+        image: '10.160.0.3:5001/streakai:r1'
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
