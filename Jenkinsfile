@@ -49,7 +49,7 @@ pipeline {
                     sh '''
                         kubectl apply -f ./app.yaml
                         kubectl rollout restart deploy streak-ai -n workspace
-                        kubectl rollout status deploy streak-ai -n workspace
+                        kubectl rollout status deploy streak-ai -n workspace  --timeout=300s
                    '''
                 }
         }
